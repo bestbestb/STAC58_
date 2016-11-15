@@ -1,0 +1,103 @@
+\documentclass[11pt,letterpaper,leqno,oneside,fleqn]{book}
+
+
+\input 610-fall2014.sty
+
+\usepackage{moreverb}
+\voffset-0.7in
+%\topmargin0pt
+\textheight 650pt
+\def\Gdot{\DOT G}
+\def\infop{\II_p}
+\def\infoq{\II_q}
+\def\infof{\II_f}
+\def\taudot{\DOT \tau}
+\def\qdot{\DOT q}
+\def\psidot{\DOT \psi}
+\def\zetadot{\DOT\zeta}
+\def\zetaddot{\DDOT\zeta}
+
+%\showlabels
+
+\begin{document}
+
+
+\HW{5}{Thursday 9 October}
+%\solveHW{5}{}
+
+\problem[MSE]
+Suppose $x_1,x_2,\dots$ are iid $N(\mu,\sig^2)$ distributed random variables.  Define $T_n=\SUM_{i\le n}\left( x_i-\xbar_n\right)^2$ where $\xbar_n= n^{-1}\SUM_{i\le n}x_i$.
+Find the constant~$c_n$ that minimizes $\EE|c_n T_n-\sig^2|^2$.  Hint:  The answer is not $c_n= (n-1)^{-1}$.
+
+\problem[Fisher]
+For a fixed density function~$f$ on the real line define
+%for $\mu\in \RR$ and $\sig>0$,
+\beqN
+f_{\theta}(z) = \frac1\sig f\left( \frac{z-\mu}{\sig}\right)
+\qt{where }\theta=(\mu,\sig)\in \RR\times \RR^+.
+\eeqN
+Find the information matrix
+\beqN
+\II(\mu,\sig)= \var_{\theta}\left( \dbyd{\log f_\theta}{\theta}\right),
+\eeqN
+the $2\times 2$ variance matrix for the random vector
+$[\partial\log f_\theta/\partial \mu, \partial\log f_\theta/\partial\sig]$.
+
+
+
+\problem[suff]
+Let $\PP_\theta$ denote the uniform distribution on $[0,\theta]^2$, for~$\theta>0$.  That
+is, the coordinates~$x_1$ and~$x_2$ are independent Uniform$[0,\theta]$
+under~$\PP_\theta$.  Let
+$S :=x_1+x_2$ and $M :=\max(x_1,x_2)$. Consider estimation of~$\theta$, with the 
+excellence of an estimator~$\thetahat$ being judged by $\EE_\theta(\thetahat-\theta)^2$, the smaller the better.
+
+\ppart
+Define $G(m):=\EE_\theta(S\mid M=m)$ for each~$m$ in~$[0,\theta]$.  Explain why $G(M)$ is
+preferred to
+$S$ as an  estimator for~$\theta$.
+
+\ppart
+Define $H(s) :=\EE_\theta(3M/2\mid S=s)$ for each $s$ in $[0,2\theta]$.
+Explain why $H(S)$ is not preferred to $3M/2$ as an  estimator for~$\theta$.
+
+\ppart
+Explain why $\EE_\theta(2x_1\mid S)$ is preferred to $2x_1$
+as an  estimator for~$\theta$.
+
+
+
+\problem[unif]
+Under the $\PP_\theta$ model, suppose $x_1,\dots, x_n$ are independent with each distributed $\Unif(\theta-1/2,\theta+1/2)$.  (You can think of $\PP_\theta$ as the uniform distribution on~$(\theta-1/2,\theta+1/2)^n$ and the $x_i$'s as the coordinates of a generic~$x$ in~$\RR^n$.)
+The order statistics $x_{(1)} < x_{(2)}< \dots < x_{(n)}$ are just the values $x_1,\dots,x_n$ rearranged in increasing order.
+
+\ppart
+Show that $T(x)=(x_{(1)},x_{(n)})$ is a  sufficient statistic for $\{\PP_\theta:\theta \in \RR\}$.
+
+\ppart
+Describe the conditional distribution of $x$ given $T(x)=(t_1,t_2)$.
+
+
+\ppart
+For $\theta-1/2 <y < z<\theta+1/2$ and $\del$ small enough,
+show that
+\beqN
+\PP_\theta\{y< x_{(1)}<y+\del, z<x_{(n)}<z+\del\} =
+\del^2 n(n-1) (z-y)^{n-2} + o(\del^2)
+.
+\eeqN
+
+\ppart
+Find the distribution of $x_{(n)}-x_{(1)}$.  Sketch the density function.
+
+\ppart
+Mimic the argument given in class (for $n=2$) to find a $90\%$ confidence interval~$J_x$ for~$\theta$.
+
+\ppart
+Find the expected length of $J_x$ and the distribution of the length 
+of~$J_x$. (A labelled, hand-drawn sketch of the distribution function would help.
+It would be useful to show where~$0.9$ is on the vertical axis.
+You might prefer to use R to draw pictures for some values of~$n$.)
+
+
+\end{document}
